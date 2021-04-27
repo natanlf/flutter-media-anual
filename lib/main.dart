@@ -104,7 +104,7 @@ class _HomeState extends State<Home> {
   }
 
   Widget buildTextField(String label, TextEditingController c) {
-    TextFormField(
+    return TextFormField(
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
           labelText: label,
@@ -117,6 +117,6 @@ class _HomeState extends State<Home> {
           return "Insira a nota 4";
         }
       },
-    )
+    );
   }
 }
