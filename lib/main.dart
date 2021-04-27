@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   TextEditingController nota1Controller =
-      TextEditingController(); //o new é implícito no dart, não é obrigatório o uso
+  TextEditingController(); //o new é implícito no dart, não é obrigatório o uso
   TextEditingController nota2Controller = TextEditingController();
   TextEditingController nota3Controller = TextEditingController();
   TextEditingController nota4Controller = TextEditingController();
@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
 
       double media = (n1 + n2 + n3 + n4) / 4;
 
-      if(media < 6.0) {
+      if (media < 6.0) {
         _infoText = "Reprovado com média $media";
       } else {
         _infoText = "Aprovado com média $media";
@@ -67,62 +67,12 @@ class _HomeState extends State<Home> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              TextFormField(
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    labelText: "Nota 1",
-                    labelStyle: TextStyle(color: Colors.indigoAccent)),
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.indigoAccent, fontSize: 25.0),
-                controller: nota1Controller,
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "Insira a nota 1";
-                  }
-                },
-              ),
-              TextFormField(
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    labelText: "Nota 2",
-                    labelStyle: TextStyle(color: Colors.indigoAccent)),
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.indigoAccent, fontSize: 25.0),
-                controller: nota2Controller,
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "Insira a nota 2";
-                  }
-                },
-              ),
-              TextFormField(
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    labelText: "Nota 3",
-                    labelStyle: TextStyle(color: Colors.indigoAccent)),
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.indigoAccent, fontSize: 25.0),
-                controller: nota3Controller,
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "Insira a nota 3";
-                  }
-                },
-              ),
-              TextFormField(
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    labelText: "Nota 4",
-                    labelStyle: TextStyle(color: Colors.indigoAccent)),
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.indigoAccent, fontSize: 25.0),
-                controller: nota4Controller,
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "Insira a nota 4";
-                  }
-                },
-              ),
+              Icon(Icons.school_outlined, size: 120.0,
+                  color: Colors.indigoAccent),
+              buildTextField("Nota 1", nota1Controller),
+              buildTextField("Nota 2", nota2Controller),
+              buildTextField("Nota 3", nota3Controller),
+              buildTextField("Nota 4", nota4Controller),
               Padding(
                   padding: EdgeInsets.only(top: 20.0, bottom: 10.0),
                   child: Container(
@@ -146,9 +96,27 @@ class _HomeState extends State<Home> {
                 style: TextStyle(color: Colors.indigoAccent, fontSize: 25.0),
               )
             ],
-          ),
-        ),
-      ),
+          ),)
+        ,
+      )
+      ,
     );
+  }
+
+  Widget buildTextField(String label, TextEditingController c) {
+    TextFormField(
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+          labelText: label,
+          labelStyle: TextStyle(color: Colors.indigoAccent)),
+      textAlign: TextAlign.center,
+      style: TextStyle(color: Colors.indigoAccent, fontSize: 25.0),
+      controller: c,
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Insira a nota 4";
+        }
+      },
+    )
   }
 }
